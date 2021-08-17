@@ -26,7 +26,7 @@ def outgoing_id(update, context):
     
 start_handler = CommandHandler('start', start)
 test_handler = CommandHandler('test', test)
-outgoing_id_handler = CommandHandler('исх', outgoing_id)
+outgoing_id_handler = CommandHandler('outgoing', outgoing_id)
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(test_handler)
 dispatcher.add_handler(outgoing_id_handler)
