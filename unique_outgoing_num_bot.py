@@ -1,4 +1,5 @@
 import os
+import uuid
 
 from flask import Flask
 
@@ -16,14 +17,19 @@ dispatcher = updater.dispatcher
 def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
     
-    
 def test(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Test passed")   
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Test passed")
+    
+def outgoing_id(update, context):
+    id = uuid.uuid4()
+    context.bot.send_message(chat_id=update.effective_chat.id, text=str(id))
     
 start_handler = CommandHandler('start', start)
 test_handler = CommandHandler('test', test)
+outgoing_id_handler = CommandHandler('исх', outgoing_id)
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(test_handler)
+dispatcher.add_handler(outgoing_id_handler)
 
 app = Flask(__name__)
 
