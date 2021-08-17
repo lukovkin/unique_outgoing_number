@@ -29,8 +29,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    name = os.environ.get("NAME", "World")
-    yield "Hello {}!".format(name)
+    yield "Hello world!"
     updater.start_polling()
 
 if __name__ == "__main__":
