@@ -19,7 +19,7 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
     
 def test(update, context):
-    logger.info(str(context))
+    logger.info(str(context.__dict__))
     context.bot.send_message(chat_id=update.effective_chat.id, text="Test passed. User data: {}".format(str(context.user_data)))
     
 def outgoing_id(update, context):
