@@ -18,7 +18,7 @@ def start(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
     
 def test(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Test passed")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Test passed. User data: {}".format(str(context.user_data)))
     
 def outgoing_id(update, context):
     id = uuid.uuid4()
@@ -31,11 +31,12 @@ dispatcher.add_handler(start_handler)
 dispatcher.add_handler(test_handler)
 dispatcher.add_handler(outgoing_id_handler)
 
+updater.start_polling()
+
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    updater.start_polling()
     return "Hello world!"
 
 if __name__ == "__main__":
