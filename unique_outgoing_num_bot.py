@@ -27,8 +27,10 @@ def test(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Test passed. User data: {}".format(str(context.user_data)))
     
 def outgoing_id(update, context):
-    id = uuid.uuid4()
-    context.bot.send_message(chat_id=update.effective_chat.id, text=str(id))
+    out_id = uuid.uuid4()
+    user = update.message.from_user
+    text = f"@{user}, Вашему исходящему присвоен № {str(out_id)}"
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
     
 start_handler = CommandHandler('start', start)
 test_handler = CommandHandler('test', test)
