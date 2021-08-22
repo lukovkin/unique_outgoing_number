@@ -11,7 +11,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 logger = logging.getLogger()
 
-updater = Updater(token='1942145754:AAHp8-mw7lOIBKCwvSDywe3usrlmGzmok0k', use_context=True)
+token = os.environ.get('TOKEN')
+logger.debug(token)
+updater = Updater(token=token, use_context=True)
 dispatcher = updater.dispatcher
 
 
