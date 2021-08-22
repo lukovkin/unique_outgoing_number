@@ -28,7 +28,7 @@ def test(update, context):
     
 def outgoing_id(update, context):
     out_id = uuid.uuid4()
-    user = update.message.from_user
+    user = update.message.from_user['username']
     text = f"@{user}, Вашему исходящему присвоен № {str(out_id)}"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
     
